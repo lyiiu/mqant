@@ -48,8 +48,11 @@ func (server *KCPServer) Start() {
 }
 
 func (server *KCPServer) init() {
-	pass := pbkdf2.Key([]byte(server.Key), []byte(SALT), 4096, 32, sha1.New)
-	block, _ := kcp.NewAESBlockCrypt(pass)
+	var block kcp.BlockCrypt
+	if server.Crypt != "" {
+		pass := pbkdf2.Key([]byte(server.Key), []byte(SALT), 4096, 32, sha1.New)
+		block, _ = kcp.NewAESBlockCrypt(pass)
+	}
 
 	ln, err := kcp.ListenWithOptions(server.Addr, block, 10, 3)
 
@@ -92,6 +95,7 @@ func (server *KCPServer) run() {
 		tempDelay = 0
 		conn.SetMtu(server.Mtu)
 		conn.SetNoDelay(server.NoDelay, server.Interval, server.Resend, server.NC)
+		conn.SetACKNoDelay(true)
 		kcpConn := newKCPConn(conn)
 		agent := server.NewAgent(kcpConn)
 		go func() {
