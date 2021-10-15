@@ -24,15 +24,17 @@ const (
 
 // KCPServer tcp服务器
 type KCPServer struct {
-	Addr     string
-	Key      string
-	Crypt    string
-	Mtu      int
-	NoDelay  int
-	Interval int
-	Resend   int
-	NC       int
-	NewAgent func(*KCPConn) Agent
+	Addr         string
+	Key          string
+	Crypt        string
+	Mtu          int
+	NoDelay      int
+	Interval     int
+	Resend       int
+	NC           int
+	DataShards   int
+	ParityShards int
+	NewAgent     func(*KCPConn) Agent
 
 	ln         *kcp.Listener
 	mutexConns sync.Mutex
@@ -54,7 +56,7 @@ func (server *KCPServer) init() {
 		block, _ = kcp.NewAESBlockCrypt(pass)
 	}
 
-	ln, err := kcp.ListenWithOptions(server.Addr, block, 10, 3)
+	ln, err := kcp.ListenWithOptions(server.Addr, block, server.DataShards, server.ParityShards)
 
 	// ln, err := net.Listen("tcp", server.Addr)
 
