@@ -60,8 +60,6 @@ func (kcpConn *KCPConn) Close() error {
 
 // Write b must not be modified by the others goroutines
 func (kcpConn *KCPConn) Write(b []byte) (n int, err error) {
-	kcpConn.Lock()
-	defer kcpConn.Unlock()
 	if kcpConn.closeFlag || b == nil {
 		return
 	}
