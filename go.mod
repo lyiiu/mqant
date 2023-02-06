@@ -41,3 +41,5 @@ require (
 	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
 	sigs.k8s.io/yaml v1.1.0 // indirect
 )
+
+replace github.com/xtaci/kcp-go/v5 v5.6.1 => github.com/lyiiu/kcp-go/v5 v5.6.2
