@@ -64,7 +64,7 @@ func TestIDGeneration(t *testing.T) {
 	n := 10000
 	ids := make(map[ID]bool, n)
 	for i := 0; i < n; i++ {
-		id := generateID()
+		id := GenerateID()
 		if ids[id] {
 			t.Errorf("duplicate ID: %v", id)
 		}
@@ -92,6 +92,6 @@ func TestParseIDError(t *testing.T) {
 
 func BenchmarkIDGeneration(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		generateID()
+		GenerateID()
 	}
 }

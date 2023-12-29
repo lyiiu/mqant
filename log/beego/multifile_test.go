@@ -25,14 +25,14 @@ import (
 func TestFiles_1(t *testing.T) {
 	log := NewLogger(10000)
 	log.SetLogger("multifile", `{"filename":"test.log","separate":["emergency", "alert", "critical", "error", "warning", "notice", "info", "debug"]}`)
-	log.Debug("debug")
-	log.Informational("info")
-	log.Notice("notice")
-	log.Warning("warning")
-	log.Error("error")
-	log.Alert("alert")
-	log.Critical("critical")
-	log.Emergency("emergency")
+	log.Debug(nil, "debug")
+	log.Informational(nil, "info")
+	log.Notice(nil, "notice")
+	log.Warning(nil, "warning")
+	log.Error(nil, "error")
+	log.Alert(nil, "alert")
+	log.Critical(nil, "critical")
+	log.Emergency(nil, "emergency")
 	fns := []string{""}
 	fns = append(fns, levelNames[0:]...)
 	name := "test"

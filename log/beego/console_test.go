@@ -20,14 +20,14 @@ import (
 
 // Try each log level in decreasing order of priority.
 func testConsoleCalls(bl *BeeLogger) {
-	bl.Emergency("emergency")
-	bl.Alert("alert")
-	bl.Critical("critical")
-	bl.Error("error")
-	bl.Warning("warning")
-	bl.Notice("notice")
-	bl.Informational("informational")
-	bl.Debug("debug")
+	bl.Emergency(nil, "emergency")
+	bl.Alert(nil, "alert")
+	bl.Critical(nil, "critical")
+	bl.Error(nil, "error")
+	bl.Warning(nil, "warning")
+	bl.Notice(nil, "notice")
+	bl.Informational(nil, "informational")
+	bl.Debug(nil, "debug")
 }
 
 // Test console logging by visually comparing the lines being output with and
