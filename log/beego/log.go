@@ -37,13 +37,14 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"github.com/json-iterator/go"
 	"log"
 	"os"
 	"runtime"
 	"strings"
 	"sync"
 	"time"
+
+	jsoniter "github.com/json-iterator/go"
 )
 
 // RFC5424 log message levels.
@@ -69,7 +70,6 @@ const (
 	AdapterMultiFile = "multifile"
 	AdapterMail      = "smtp"
 	AdapterConn      = "conn"
-	AdapterEs        = "es"
 	AdapterJianLiao  = "jianliao"
 	AdapterSlack     = "slack"
 	AdapterDingtalk  = "dingtalk"
