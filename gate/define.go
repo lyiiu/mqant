@@ -16,9 +16,10 @@
 package gate
 
 import (
+	"time"
+
 	"github.com/liangdas/mqant/log"
 	"github.com/liangdas/mqant/network"
-	"time"
 )
 
 // RPCParamSessionType gate.session 类型
@@ -49,7 +50,7 @@ type GateHandler interface {
 	OnDestroy()                                                                  //退出事件,主动关闭所有的连接
 }
 
-//Session session代表一个客户端连接,不是线程安全的
+// Session session代表一个客户端连接,不是线程安全的
 type Session interface {
 	GetIP() string
 	GetTopic() string
@@ -57,8 +58,8 @@ type Session interface {
 	// Deprecated: 因为命名规范问题函数将废弃,请用GetUserID代替
 	GetUserId() string
 	GetUserID() string
-	GetUserIdInt64() int64
 	// Deprecated: 因为命名规范问题函数将废弃,请用GetUserIDInt64代替
+	GetUserIdInt64() int64
 	GetUserIDInt64() int64
 	// Deprecated: 因为命名规范问题函数将废弃,请用GetSessionID代替
 	GetSessionId() string

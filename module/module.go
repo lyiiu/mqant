@@ -12,14 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-//Package module 模块定义
+// Package module 模块定义
 package module
 
 import (
 	"context"
+
 	"github.com/liangdas/mqant/conf"
 	"github.com/liangdas/mqant/registry"
-	"github.com/liangdas/mqant/rpc"
+	mqrpc "github.com/liangdas/mqant/rpc"
 	"github.com/liangdas/mqant/selector"
 	"github.com/nats-io/nats.go"
 )
@@ -35,8 +36,8 @@ type ServerSession interface {
 	GetId() string
 	GetID() string
 	GetName() string
-	GetRpc() mqrpc.RPCClient
 	// Deprecated: 因为命名规范问题函数将废弃,请用GetRPC代替
+	GetRpc() mqrpc.RPCClient
 	GetRPC() mqrpc.RPCClient
 	GetApp() App
 	GetNode() *registry.Node
@@ -47,7 +48,7 @@ type ServerSession interface {
 	CallNRArgs(_func string, ArgsType []string, args [][]byte) (err error)
 }
 
-//App mqant应用定义
+// App mqant应用定义
 type App interface {
 	UpdateOptions(opts ...Option) error
 	Run(mods ...Module) error
@@ -154,7 +155,7 @@ type RPCModule interface {
 	GetExecuting() int64
 }
 
-//RPCSerialize 自定义参数序列化接口
+// RPCSerialize 自定义参数序列化接口
 type RPCSerialize interface {
 	/**
 	序列化 结构体-->[]byte

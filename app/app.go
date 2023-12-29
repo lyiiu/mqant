@@ -20,7 +20,6 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	basegate "github.com/liangdas/mqant/gate/base"
 	"os"
 	"os/exec"
 	"os/signal"
@@ -29,6 +28,8 @@ import (
 	"sync"
 	"syscall"
 	"time"
+
+	basegate "github.com/liangdas/mqant/gate/base"
 
 	"github.com/liangdas/mqant/conf"
 	"github.com/liangdas/mqant/log"
@@ -358,7 +359,7 @@ func (app *DefaultApp) GetServerByID(serverID string) (module.ServerSession, err
 }
 
 // GetServerById 通过服务ID获取服务实例
-// Deprecated: 因为命名规范问题函数将废弃,请用GetServerById代替
+// Deprecated: 因为命名规范问题函数将废弃,请用GetServerByID代替
 func (app *DefaultApp) GetServerById(serverID string) (module.ServerSession, error) {
 	return app.GetServerByID(serverID)
 }
